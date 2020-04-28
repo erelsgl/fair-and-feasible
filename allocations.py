@@ -176,8 +176,6 @@ def stringify_allocation(allocation:Allocation)->str:
     # return ",".join(["".join(sorted(bundle)) for bundle in allocation])
 
 
-
-
 if __name__ == "__main__":
     import doctest
     (failures,tests) = doctest.testmod(report=True)

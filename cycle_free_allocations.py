@@ -9,11 +9,13 @@ import networkx as nx
 
 from typing import *
 Edge = Tuple[int]
+Bundle = Set[Edge]
+Allocation = List[Bundle]
 
 from allocations import feasible_allocations
 
 
-def no_cycles(bundle:Set[Edge], new_item:Edge)->bool:
+def no_cycles(bundle:Bundle, new_item:Edge)->bool:
     """
     Implements a feasibility constraint based on a graph matroid.
     Here, each item is an edge in a graph,
@@ -51,16 +53,16 @@ def cycle_free_allocations(edges:List[Edge], num_of_agents:int):
 
 ### UTILITIES FOR PRETTY PRINTING
 
-def stringify_bundle(bundle:Set[Edge]):
+def stringify_bundle(bundle:Bundle):
     return ",".join(["".join(edge) for edge in bundle])
 
-def stringify_allocation(allocation:List[Set[Edge]]):
+def stringify_allocation(allocation:Allocation):
     return " ; ".join([stringify_bundle(bundle) for bundle in allocation])
 
-def print_all_allocations(edges:List[Edge]):
+def print_all_allocations(allocations:List[Allocation]):
     allocation_num=1
-    for a in cycle_free_allocations(edges, 3):
-        print(allocation_num, ". ", stringify_allocation(a))
+    for allocation in allocations:
+        print(allocation_num, ". ", stringify_allocation(allocation))
         allocation_num += 1
 
 
@@ -71,8 +73,8 @@ if __name__ == "__main__":
 
     k4_edges = [(w,x),(w,y),(w,z),(x,y),(x,z),(y,z)]
     print("\nAll cycle-free allocations of K4:")
-    print_all_allocations(k4_edges)
+    print_all_allocations(cycle_free_allocations(k4_edges,3))
 
     k5_edges = [(v,w),(v,x),(v,y),(v,z)] + k4_edges
     print("\nAll cycle-free allocations of K5:")
-    print_all_allocations(k5_edges)
+    print_all_allocations(cycle_free_allocations(k5_edges,3))
