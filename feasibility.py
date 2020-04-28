@@ -21,9 +21,3 @@ def at_most_1_item_per_agent(bundle:Bundle, new_item:Item)->bool:
 
 def at_most_3_items_per_agent(bundle:Bundle, new_item:Item)->bool:
     return len(bundle)<=2
-
-
-if __name__ == "__main__":
-    import doctest
-    (failures,tests) = doctest.testmod(report=True)
-    print ("{} failures, {} tests".format(failures,tests))
