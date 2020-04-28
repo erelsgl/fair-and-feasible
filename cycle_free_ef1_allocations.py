@@ -65,7 +65,7 @@ if __name__ == "__main__":
         AdditiveAgent(uniform_valuation, "Bob"),
         AdditiveAgent(uniform_valuation, "Chana"),
     ]
-    print_cycle_free_ef1_allocations("K4, uniform valuations",k4_edges,uniform_agents)
+    # print_cycle_free_ef1_allocations("K4, uniform valuations",k4_edges,uniform_agents)
     # print_cycle_free_ef1_allocations("K5, uniform valuations",k5_edges,uniform_agents)
 
     exponential_agents = [
@@ -73,7 +73,7 @@ if __name__ == "__main__":
         AdditiveAgent(exponential_valuations, "Bob"),
         AdditiveAgent(exponential_valuations, "Chana"),
     ]
-    print_cycle_free_ef1_allocations("K4, exponential valuations",k4_edges,exponential_agents)
+    # print_cycle_free_ef1_allocations("K4, exponential valuations",k4_edges,exponential_agents)
     # print_cycle_free_ef1_allocations("K5, exponential valuations",k5_edges,exponential_agents)
 
     random_agents = [
@@ -81,7 +81,7 @@ if __name__ == "__main__":
         AdditiveAgent({edge:math.floor(random()*1000) for edge in k5_edges}, "Bob"),
         AdditiveAgent({edge:math.floor(random()*1000) for edge in k5_edges}, "Chana"),
     ]
-    # print_cycle_free_ef1_allocations("K4, random valuations",k4_edges,random_agents)
-    print_cycle_free_ef1_allocations("K5, random valuations", k5_edges, random_agents)
+    print_cycle_free_ef1_allocations("K4, random valuations",k4_edges,random_agents)
+    # print_cycle_free_ef1_allocations("K5, random valuations", k5_edges, random_agents)
 
 
