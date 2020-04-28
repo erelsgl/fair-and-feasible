@@ -23,6 +23,24 @@ k5_edges = [(v, w), (v, x), (v, y), (v, z)] + k4_edges
 
 
 def cycle_free_ef1_allocations(edges:List[Edge], agents:List[Agent]):
+    """
+    Generates all allocations that are both cycle-free and EF1.
+    :param edges: List of edges in the graph.
+    :param agents:  List of agents.
+
+    >>> edges = [(x,y),(y,z),(z,x)]
+    >>> uniform_valuation = {edge:1 for edge in edges}
+    >>> agent = AdditiveAgent(uniform_valuation)
+    >>> for a in cycle_free_ef1_allocations(edges,[agent,agent,agent]):
+    ...     print(stringify_allocation(a))
+    xy ; yz ; zx
+    xy ; zx ; yz
+    yz ; xy ; zx
+    zx ; xy ; yz
+    yz ; zx ; xy
+    zx ; yz ; xy
+    """
+
     for allocation in cycle_free_allocations(edges, len(agents)):
         if is_EF1(allocation, agents):
             yield allocation
