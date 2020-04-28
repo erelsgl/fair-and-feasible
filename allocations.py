@@ -1,21 +1,16 @@
 """
-A class for enumerating all feasible allocations of a given set of items.
+A function for enumerating all feasible allocations of a given set of items.
+Supports every downwards-closed feasibility constraint.
 
 Author: Erel Segal-Halevi
 Since:  2020-04
 """
-
-
-##### TYPES #####
 
 from typing import *
 Item = Any
 Bundle = Set[Item]
 Allocation = List[Bundle]
 
-
-
-##### PUBLIC FUNCTION #####
 
 def feasible_allocations(all_items:Bundle, num_of_agents:int, is_feasible:Callable[[Bundle,Item], bool]):
     """
@@ -39,6 +34,8 @@ def feasible_allocations(all_items:Bundle, num_of_agents:int, is_feasible:Callab
     """
     ae = AllocationEnumerator(all_items, num_of_agents, is_feasible)
     yield from ae.feasible_allocations()
+
+
 
 
 

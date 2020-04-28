@@ -1,5 +1,10 @@
 """
 Defines several common feasibility constraints on bundles.
+Note that a feasibility-checker receives a bundle and an item,
+and returns True iff adding the item to the bundle results in a feasible bundle.
+
+Author: Erel Segal-Halevi
+Since:  2020-04
 """
 
 from typing import *
