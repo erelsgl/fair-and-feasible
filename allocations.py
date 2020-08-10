@@ -11,6 +11,8 @@ Item = Any
 Bundle = Set[Item]
 Allocation = List[Bundle]
 
+from agents import Agent
+
 
 def feasible_allocations(all_items:Bundle, num_of_agents:int, is_feasible:Callable[[Bundle,Item], bool]):
     """
@@ -37,6 +39,21 @@ def feasible_allocations(all_items:Bundle, num_of_agents:int, is_feasible:Callab
 
 
 
+##### PRETTY PRINTING #####
+
+def stringify_bundle(bundle:Bundle):
+    return ",".join(["".join(edge) for edge in bundle])
+
+def stringify_allocation(allocation:Allocation):
+    return " ; ".join([stringify_bundle(bundle) for bundle in allocation])
+
+def stringify_allocation_and_values(allocation:Allocation, agents:List[Agent]):
+    result = ""
+    for i_agent,agent in enumerate(agents):
+        agent_bundle = allocation[i_agent]
+        result += "{}'s bundle: {},  values: {}\n".format(
+            agent.name(), stringify_bundle(agent_bundle), [agent.value(bundle) for bundle in allocation])
+    return result
 
 
 ##### IMPLEMENTATION DETAILS #####

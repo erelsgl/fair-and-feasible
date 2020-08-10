@@ -12,7 +12,7 @@ Edge = Tuple[int]
 Bundle = Set[Edge]
 Allocation = List[Bundle]
 
-from allocations import feasible_allocations
+from allocations import *
 
 
 def no_cycles(bundle:Bundle, new_item:Edge)->bool:
@@ -53,12 +53,6 @@ def cycle_free_allocations(edges:List[Edge], num_of_agents:int):
 
 ### UTILITIES FOR PRETTY PRINTING
 
-def stringify_bundle(bundle:Bundle):
-    return ",".join(["".join(edge) for edge in bundle])
-
-def stringify_allocation(allocation:Allocation):
-    return " ; ".join([stringify_bundle(bundle) for bundle in allocation])
-
 def print_all_allocations(allocations:List[Allocation]):
     allocation_num=1
     for allocation in allocations:
@@ -71,10 +65,15 @@ def print_all_allocations(allocations:List[Allocation]):
 if __name__ == "__main__":
     (v,w,x,y,z)="vwxyz"
 
-    k4_edges = [(w,x),(w,y),(w,z),(x,y),(x,z),(y,z)]
-    print("\nAll cycle-free allocations of K4:")
-    print_all_allocations(cycle_free_allocations(k4_edges,3))
+    # k4_edges = [(w,x),(w,y),(w,z),(x,y),(x,z),(y,z)]
+    # print("\nAll cycle-free allocations of K4:")
+    # print_all_allocations(cycle_free_allocations(k4_edges,3))
+    #
+    # k5_edges = [(v,w),(v,x),(v,y),(v,z)] + k4_edges
+    # print("\nAll cycle-free allocations of K5:")
+    # print_all_allocations(cycle_free_allocations(k5_edges,3))
 
-    k5_edges = [(v,w),(v,x),(v,y),(v,z)] + k4_edges
-    print("\nAll cycle-free allocations of K5:")
-    print_all_allocations(cycle_free_allocations(k5_edges,3))
+    k5_subset = [(v,w), (v,z),(z,x),(x,w), (w,z),(z,y),(y,w)]
+    print("\nAll cycle-free allocations of k5_subset:")
+    print_all_allocations(cycle_free_allocations(k5_subset,2))
+

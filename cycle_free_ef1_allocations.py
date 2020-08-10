@@ -81,7 +81,8 @@ if __name__ == "__main__":
         AdditiveAgent({edge:math.floor(random()*1000) for edge in k5_edges}, "Bob"),
         AdditiveAgent({edge:math.floor(random()*1000) for edge in k5_edges}, "Chana"),
     ]
-    print_cycle_free_ef1_allocations("K4, random valuations",k4_edges,random_agents)
+    # print_cycle_free_ef1_allocations("K4, random valuations",k4_edges,random_agents)
     # print_cycle_free_ef1_allocations("K5, random valuations", k5_edges, random_agents)
 
-
+    k5_subset = [(v,w), (v,z),(z,x),(x,w), (w,z),(z,y),(y,w)]
+    print_cycle_free_ef1_allocations("k5_subset", k5_subset,random_agents[0:2])
